@@ -5,7 +5,7 @@
       <meta charset="utf-8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-      <title><%= content_for?(:title) ? yield(:title) : "Snatch It!" %></title>
+      <title>Snatch It! : <%= content_for?(:title) ? yield(:title) : "Snatch It!" %></title>
       <%= stylesheet_link_tag "application" %>
       <%= javascript_include_tag "application" %>
       <%= csrf_meta_tags %>
@@ -36,6 +36,8 @@
                 <li class="divider"></li>
                 <% if user_signed_in? %>
                   <li><%= link_to "My stuff", sale_products_path(current_user.sale) %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Add stuff", new_sale_product_path(current_user.sale) %></li>
                   <li class="divider"></li>
                   <li><%= link_to "Sign out", destroy_session_path(:user), method: :delete %></li>
                 <% else %>

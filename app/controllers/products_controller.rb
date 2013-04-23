@@ -14,17 +14,17 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
+    @product = current_sale.products.new
   end
 
   def edit
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = current_sale.products.new(product_params)
 
     if @product.save
-      redirect_to @product, notice: 'Product was successfully created.' 
+      redirect_to sale_products_path(current_sale), notice: 'Product was successfully created.' 
     else
       render action: 'new' 
     end
@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to @product, notice: 'Product was successfully updated.' 
+      redirect_to sale_products_path(current_sale), notice: 'Product was successfully updated.' 
     else
       render action: 'edit' 
     end
@@ -40,17 +40,21 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to products_url 
+    redirect_to sale_products_path(current_sale)
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_product
-    @product = Product.find(params[:id])
+    @product = current_sale.products.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def product_params
     params.require(:product).permit(:title, :description, :url)
+  end
+
+  def current_sale
+    current_user.sale
   end
 end

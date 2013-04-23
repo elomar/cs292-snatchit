@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_one :sale
   after_create :create_sale!
 
+  validates_presence_of :name
+
   def to_s
     name
   end
