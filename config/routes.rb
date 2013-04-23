@@ -1,4 +1,8 @@
 Snatchit::Application.routes.draw do
+  get "sales/index"
+  get "sales/show"
   devise_for :users
-  root to: 'stores#index'
+  root to: 'sales#index'
+
+  resources :sales, only: [:index, :show]
 end

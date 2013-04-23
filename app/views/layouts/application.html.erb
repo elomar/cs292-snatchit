@@ -1,38 +1,104 @@
 <!DOCTYPE html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7 ]><html class="ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="en"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-  <%= stylesheet_link_tag "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+      <title><%= content_for?(:title) ? yield(:title) : "Snatch It!" %></title>
+      <%= stylesheet_link_tag "application" %>
+      <%= javascript_include_tag "application" %>
+      <%= csrf_meta_tags %>
+    </head>
+    <body>
+      <div class="row">
+        <div class="large-12 columns">
 
-  <div class="container">
-    <div class="row">
-      <div class="twelve columns">
-        <%if flash[:notice] %>
-          <div class="alert-box success"><%= flash[:notice] %><a class="close">x</a></div>
-        <% end %>
-  
-        <%if flash[:alert] %>
-          <div class="alert-box error"><%= flash[:alert] %><a class="close">x</a></div>
-        <% end %>
+          <!-- Navigation -->
+
+          <div class="row">
+            <div class="large-12 columns">
+
+              <nav class="top-bar">
+              <ul class="title-area">
+                <!-- Title Area -->
+                <li class="name">
+                <h1>
+                  <%= link_to "Snatch It!", root_url %>
+                </h1>
+                </li>
+                <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+              </ul>
+
+              <section class="top-bar-section">
+              <!-- Right Nav Section -->
+              <ul class="right">
+                <li class="divider"></li>
+                <% if user_signed_in? %>
+                  <li><%= link_to "Sign out", destroy_session_path(:user), method: :delete %></li>
+                <% else %>
+                  <li><%= link_to "Sign in", new_session_path(:user) %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Sign up", new_registration_path(:user) %></li>
+                <% end %>
+                <li class="divider"></li>
+              </ul>
+              </section>
+              </nav>
+              <!-- End Top Bar -->
+            </div>
+          </div>
+
+          <!-- End Navigation -->
+
+          <div class="row">
+
+            <!-- Side Bar -->
+
+            <div class="large-12 columns">
+
+              <div class="hide-for-small panel">
+                <h3><%= content_for?(:title) ? yield(:title) : "Snatch It!" %></h3>
+              </div>
+
+            </div>
+
+            <!-- End Side Bar -->
+
+            <div class="large-12 columns">
+              <% if flash[:notice] %>
+                <div class="alert-box success"><%= flash[:notice] %><a class="close" href="#">x</a></div>
+              <% end %>
+        
+              <% if flash[:alert] %>
+                <div class="alert-box error"><%= flash[:alert] %><a class="close" href="#">x</a></div>
+              <% end %>
+
+              <%= yield %>
+            </div>
+
+          </div>
+        </div>
       </div>
-  
-      <div class="twelve columns">
-        <%= yield %>
+
+
+      <!-- Footer -->
+
+      <footer class="row">
+      <div class="large-12 columns"><hr />
+        <div class="row">
+          <div class="large-6 columns">
+            <p>&copy; Copyright Snatch It! - CS292 final project</p>
+          </div>
+        </div>
       </div>
+      </footer>
+
+      <!-- End Footer -->
+
     </div>
   </div>
 
 </body>
 </html>
+
