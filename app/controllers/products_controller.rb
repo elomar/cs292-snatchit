@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to sale_products_path(current_sale)
+    redirect_to sale_products_path(current_sale), notice: 'Product was successfully removed.' 
   end
 
   private

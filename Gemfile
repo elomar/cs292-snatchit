@@ -27,6 +27,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.0.1'
 
+gem 'cancan'
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 gem 'simple_form'
 
