@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 1.0.1'
 gem 'cancan'
 gem 'carrierwave'
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
+gem 'fog'
 gem 'simple_form'
 
 # To use ActiveModel has_secure_password
