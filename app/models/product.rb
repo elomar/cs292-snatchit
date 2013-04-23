@@ -6,6 +6,10 @@ class Product < ActiveRecord::Base
 
   default_scope order("updated_at desc")
 
+  def to_s
+    title
+  end
+
   protected
 
   def update_current_value(_bid)

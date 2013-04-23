@@ -5,6 +5,9 @@ class BidsController < ApplicationController
     if @bid.save
       save_current_bidder params
 
+      Notifier.new_bid(@bid).deliver
+      Notifier.product_snatched(@bid.previous).deliver if @bid.previous.present? && @bid.email != @bid.previous.email
+
       redirect_to sale_products_path(@bid.product.sale), notice: "Congratulations, you snatched it - for now!."
     else
       redirect_to sale_products_path(@bid.product.sale), alert: "Ops, we couldn't let you snatch this one! Check your info."
