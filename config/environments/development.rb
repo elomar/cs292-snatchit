@@ -24,4 +24,6 @@ Snatchit::Application.configure do
 
   # Debug mode disables concatenation and preprocessing of assets.
   config.assets.debug = true
+
+  config.action_mailer.default_url_options = { :host => 'snatchit.dev' }
 end
