@@ -2,7 +2,12 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    if params[:sale_id]
+      @sale = Sale.find(params[:sale_id])
+      @products = @sale.products
+    else
+      @products = Product.all
+    end
   end
 
   def show
