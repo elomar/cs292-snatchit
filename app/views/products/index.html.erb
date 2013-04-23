@@ -4,7 +4,7 @@
 
   <% @products.each do |product| %>
     <div class="large-4 small-6 columns">
-      <img src="http://placehold.it/1000x1000&text=Thumbnail">
+      <%= image_tag product.picture.url %>
 
       <div class="panel">
         <h5><%= link_to product.title, product.url %></h5>
