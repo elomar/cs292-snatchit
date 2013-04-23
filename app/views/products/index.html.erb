@@ -8,12 +8,16 @@
 
       <div class="panel">
         <h5><%= link_to product.title, product.url %></h5>
-        <h6 class="subheader">$000.00</h6>
         <p><%= product.description %></p>
         <% if can? :update, product %>
           <%= link_to 'Edit', edit_product_path(product), class: "tiny secondary button" %>
           <%= link_to 'Remove', product_path(product), confirm: "Are you sure?", method: :delete, class: "tiny secondary button" %>
         <% end %>
+
+        <h6 class="subheader">Current bid: $<%= product.current_value %></h6>
+        
+        <h6 class="subheader">Your bid</h6>
+        <%= render "bid", product: product %>
       </div>
     </div>
   <% end %>

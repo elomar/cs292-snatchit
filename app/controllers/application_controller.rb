@@ -5,9 +5,19 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  helper_method :current_bidder
+
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :name, :password, :password_confirmation) }
+  end
+  
+  def current_bidder
+    if cookies[:current_bidder_name]
+      { name: cookies[:current_bidder_name], email: cookies[:current_bidder_email] }
+    else
+      {}
+    end
   end
 end

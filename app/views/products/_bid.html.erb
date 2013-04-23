@@ -1,0 +1,15 @@
+<%= simple_form_for([product, product.bids.new]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <% if current_bidder.blank? %>
+      <%= f.input :name %>
+      <%= f.input :email %>
+    <% end %>
+    <%= f.input :value %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, "Snatch it!" %>
+  </div>
+<% end %>
