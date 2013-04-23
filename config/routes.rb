@@ -1,8 +1,12 @@
 Snatchit::Application.routes.draw do
-  get "sales/index"
-  get "sales/show"
-  devise_for :users
-  root to: 'sales#index'
+  resources :products
 
-  resources :sales, only: [:index, :show]
+  devise_for :users
+  root to: 'products#index'
+
+  resources :products, only: [:index]
+
+  resources :sales do
+    resources :products
+  end
 end

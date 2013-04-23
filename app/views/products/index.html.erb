@@ -1,0 +1,19 @@
+<!-- Thumbnails -->
+
+<div class="row">
+
+  <% @products.each do |product| %>
+    <div class="large-4 small-6 columns">
+      <img src="http://placehold.it/1000x1000&text=Thumbnail">
+
+      <div class="panel">
+        <h5><%= link_to product.title, product.url %></h5>
+        <h6 class="subheader">$000.00</h6>
+        <p><%= product.description %></p>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
+  <!-- End Thumbnails -->

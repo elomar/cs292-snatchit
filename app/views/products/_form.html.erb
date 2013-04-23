@@ -1,0 +1,14 @@
+<%= simple_form_for(@product) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.association :sale %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :url %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

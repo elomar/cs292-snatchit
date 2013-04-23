@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sale_id: 
+  title: MyString
+  description: MyText
+  url: MyString
+
+two:
+  sale_id: 
+  title: MyString
+  description: MyText
+  url: MyString
