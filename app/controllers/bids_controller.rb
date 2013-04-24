@@ -5,7 +5,7 @@ class BidsController < ApplicationController
   end
 
   def create
-    @bid = Product.find(params[:product_id]).bids.create(bid_params)
+    @bid = Product.find(params[:product_id]).bids.new(bid_params)
 
     if @bid.save
       save_current_bidder params
