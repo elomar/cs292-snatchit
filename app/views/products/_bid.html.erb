@@ -1,4 +1,4 @@
-<%= simple_form_for([product, product.bids.new]) do |f| %>
+<%= simple_form_for([product, product.build_bid(current_bidder)]) do |f| %>
   <%= f.error_notification %>
 
   <div class="inputs">
