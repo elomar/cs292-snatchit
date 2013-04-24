@@ -17,7 +17,7 @@ class Product < ActiveRecord::Base
   protected
 
   def update_current_value(_bid)
-    update_column :current_value, bids.maximum("value") || current_value
+    update_attributes current_value: bids.maximum("value") || current_value
   end
 
   def next_value
