@@ -5,7 +5,7 @@ Snatchit::Application.routes.draw do
   root to: 'products#index'
 
   resources :products, only: [:index] do
-    resources :bids
+    resources :bids, only: [:new, :create]
   end
 
   resources :sales do

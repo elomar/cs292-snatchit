@@ -10,7 +10,7 @@ class Notifier < ActionMailer::Base
 
   def product_snatched(previous_bid)
     @previous_bid = previous_bid
-    @url = sale_products_url(@previous_bid.product.sale)
+    @url = new_product_bid_url(@previous_bid.product)
 
     mail to: @previous_bid.email, subject: "Hey #{@previous_bid.name}, someone is trying to snatch your stuff!"
   end
