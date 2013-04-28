@@ -14,4 +14,10 @@ class Notifier < ActionMailer::Base
 
     mail to: @previous_bid.email, subject: "Hey #{@previous_bid.name}, someone is trying to snatch your stuff!"
   end
+
+  def winner(bid)
+    @bid = bid
+
+    mail to: @bid.email, cc: @bid.product.sale.user.email, subject: "Congratulations #{@bid.name}, you snatched it!"
+  end
 end

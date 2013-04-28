@@ -14,6 +14,10 @@ class Product < ActiveRecord::Base
     current_value + current_value/10 + 1
   end
 
+  def winning_bid
+    bids.reorder("value").last
+  end
+
   def to_s
     title
   end
